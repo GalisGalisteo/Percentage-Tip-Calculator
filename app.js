@@ -1,21 +1,25 @@
 
 const calculateButtonNode = document.querySelector('#calculate');
 const resetButtonNode = document.querySelector('#reset');
+const billAmountInput = document.querySelector('#bill-amount');
+const percentageTipInput = document.querySelector('#percentage-tip');
+const tipAmountOutput = document.querySelector('#tip-amount');
+const totalOutput = document.querySelector('#total');
 
 calculateButtonNode.addEventListener('click', () => {
-    const billAmountInput = parseInt(document.querySelector('#bill-amount').value);
-    const percentageTipInput = parseInt(document.querySelector('#percentage-tip').value);
+    const billAmountInputValue = +billAmountInput.value;
+    const percentageTipInputValue = +percentageTipInput.value;
 
-    const tipAmountOutput = document.querySelector('#tip-amount');
-    const totalOutput = document.querySelector('#total');
-
-    const tipAmount = billAmountInput * percentageTipInput / 100;
-    const total = billAmountInput + tipAmount;
+    const tipAmount = billAmountInputValue * percentageTipInputValue / 100;
+    const total = billAmountInputValue + tipAmount;
 
     tipAmountOutput.value = tipAmount;
     totalOutput.value = total;
 })
 
 resetButtonNode.addEventListener('click', () => {
-    location.reload();
+    billAmountInput.value = '';
+    percentageTipInput.value = '';
+    tipAmountOutput.value = '';
+    totalOutput.value = '';
 })
